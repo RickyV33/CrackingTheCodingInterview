@@ -1,9 +1,11 @@
 package com.company;
 
-/**
- * Created by Slick on 11/17/16.
- */
 public class URLify {
+    /*
+    Initial Thoughts:
+    Does the string have sufficient length?
+    Check my edge cases: is url empty? is url null?
+     */
     public char[] URLify(char[] url, int len) {
         if (len == 0 || url == null) {
             return url;
