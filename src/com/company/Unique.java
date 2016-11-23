@@ -4,10 +4,20 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Unique {
+    /*
+    Initial Thoughts:
+    Is it case sensitive? - assume no
+    What is the character set? ASCII VS Extended ASCII VS UTF-8
+    Can we ignore whitespace?
+    Is memory an issue?
+     */
     public boolean isUnique(String s) {
         Map<Character, Integer> occur = new HashMap<>();
-        int length = s.length();
-        for (int i = 0; i < length; ++i) {
+        if (s == null || s.length() == 0) {
+            return false;
+        }
+        s = s.toLowerCase();
+        for (int i = 0; i < s.length(); ++i) {
             char current = s.charAt(i);
             if (occur.containsKey(current)) {
                 return false;
@@ -19,7 +29,7 @@ public class Unique {
     }
 
     public boolean isUniqueTwo(String s) {
-        if (s.length() == 0) {
+        if (s == null || s.length() == 0) {
             return false;
         } else if (s.length() == 1) {
             return true;
