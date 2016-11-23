@@ -2,12 +2,23 @@ package com.company;
 
 import java.util.HashMap;
 
-/**
- * Created by Slick on 11/17/16.
- */
 public class Permutation {
+    /*
+    Initial Thoughts:
+    Is parameter 'a' larger in size than 'b'?
+    Are there duplicate letters?
+    Is it case sensitive?
+    Make sure to account for the null check.
+    If they aren't the same size, then return false.
+    Make every permutation of both strings and compare them. This leads to awful
+    runtime: O(a! + b!).
+    Permutations are just character counts: make a hash table.
+     */
     public boolean isPermutation(String a, String b) {
-        HashMap<Character, Integer> occur = new HashMap();
+        HashMap<Character, Integer> occur = new HashMap<>();
+        if (a == null || b == null) {
+            return false;
+        }
         int aLen = a.length();
         int bLen = b.length();
         if (aLen != bLen) {
