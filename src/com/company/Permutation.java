@@ -16,20 +16,18 @@ public class Permutation {
      */
     public boolean isPermutation(String a, String b) {
         HashMap<Character, Integer> occur = new HashMap<>();
-        if (a == null || b == null) {
+        if (a == null || b == null || a.length() == 0 ||
+                b.length() == 0 || a.length() != b.length()) {
             return false;
         }
-        int aLen = a.length();
-        int bLen = b.length();
-        if (aLen != bLen) {
-            return false;
-        }
-        for (int i = 0; i < aLen; ++i) {
+        a = a.toLowerCase();
+        b = b.toLowerCase();
+        for (int i = 0; i < a.length(); ++i) {
             char current = a.charAt(i);
             int count = occur.getOrDefault(current, 0);
             occur.put(current, ++count);
         }
-        for (int i = 0; i < bLen; ++i) {
+        for (int i = 0; i < b.length(); ++i) {
             char current = b.charAt(i);
             int count = occur.getOrDefault(current, 0) - 1;
             if (count < 0) {
