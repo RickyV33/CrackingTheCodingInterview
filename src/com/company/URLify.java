@@ -7,7 +7,7 @@ public class URLify {
     Check my edge cases: is url empty? is url null?
      */
     public char[] URLify(char[] url, int len) {
-        if (len == 0 || url == null) {
+        if (len < 2 || url == null) {
             return url;
         }
         for (int i = 0; i < len; ++i) {

@@ -8,12 +8,6 @@ public class Main {
 //        System.out.println(p.isPermutation("bbbac", "abcbb"));
 //        System.out.println(p.isPermutation("abc", "c"));
 //        System.out.println(p.isPermutation("abcdf", "kdfjd"));
-//        URLify u = new URLify();
-//        System.out.println(u.URLify("this is a test      ".toCharArray(), 20));
-//        System.out.println(u.URLify("   ".toCharArray(), 3));
-//        System.out.println(u.URLify("".toCharArray(), 0));
-//        System.out.println(u.URLify("a".toCharArray(), 1));
-//        System.out.println(u.URLify("this test  ".toCharArray(), 11));
 //        PermutationPalindrome p = new PermutationPalindrome();
 //        System.out.println(p.isPalindrome("taco cat"));
 //        System.out.println(p.isPalindrome("TacO cat"));
