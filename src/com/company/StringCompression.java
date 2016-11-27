@@ -15,20 +15,14 @@ public class StringCompression {
         if (s == null || s.length() == 0) {
             return ""; // Avoid returning null
         }
-        int count = 1;
+        int count = 0;
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < s.length(); ++i) {
-            if (i == s.length() - 1) {
+            ++count;
+            if (i + 1 >= s.length() || s.charAt(i) != s.charAt(i + 1)) {
                 sb.append(s.charAt(i));
                 sb.append(count);
-            } else {
-                if (s.charAt(i) == s.charAt(i + 1)) {
-                    ++count;
-                } else {
-                    sb.append(s.charAt(i));
-                    sb.append(count);
-                    count = 1;
-                }
+                count = 0;
             }
         }
         return sb.length() > s.length() ? s: sb.toString();
