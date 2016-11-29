@@ -11,16 +11,6 @@ import static org.junit.Assert.assertEquals;
 public class RotateMatrixTest {
     RotateMatrix rm = new RotateMatrix();
 
-    public void testPrint(int[][] m) {
-        for (int i = 0; i < m.length; ++i) {
-            for (int k = 0; k < m.length; ++k) {
-                System.out.print(m[i][k]);
-                System.out.print(", ");
-            }
-            System.out.println();
-        }
-    }
-
     @Test
     public void testRotateMatrixWithValidMatrix() {
         int [][] matrix = {{1,2,3,4}, {5,6,7,8}, {9,10,11,12}, {13,14,15,16}};
