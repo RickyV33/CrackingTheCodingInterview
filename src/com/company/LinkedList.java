@@ -62,7 +62,8 @@ public class LinkedList {
             previous.setNext(current.getNext());
             return removeDuplicates(current.getData(), current.getNext(), previous) + 1;
         }
-       return removeDuplicates(current.getData(), current.getNext(), current);
+       return removeDuplicates(data, current.getNext(), current) +
+               removeDuplicates(current.getData(), current.getNext(), current);
     }
 
     /*

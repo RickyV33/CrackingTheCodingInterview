@@ -1,5 +1,6 @@
 package com.company;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -11,71 +12,53 @@ import static org.junit.Assert.assertEquals;
 public class LinkedListTest {
     LinkedList ll = new LinkedList();
 
-    @Test
-    public void testAdd() {
-        assertEquals(0, ll.getLength());
-        ll.add(30);
-        assertEquals(1, ll.getLength());
-        assertEquals("30", ll.toString());
-    }
-
-    @Test
-    public void testStringOverriding() {
-        assertEquals("", ll.toString());
+    @Before
+    public void initLLL() {
         int num = 5;
         while (num > 0) {
             ll.add(num);
             --num;
         }
+    }
+    @Test
+    public void testAdd() {
+        assertEquals(5, ll.getLength());
+        ll.add(30);
+        assertEquals(6, ll.getLength());
+        assertEquals("30 -> 1 -> 2 -> 3 -> 4 -> 5", ll.toString());
+    }
+
+    @Test
+    public void testStringOverriding() {
         assertEquals("1 -> 2 -> 3 -> 4 -> 5", ll.toString());
     }
 
     @Test
     public void testRemoveDuplicates() {
-        int num = 5;
-        while (num > 0) {
-            if (num == 1 || num == 2) {
-                ll.add(num);
-            }
-            ll.add(num);
-            --num;
-        }
-        assertEquals("1 -> 1 -> 2 -> 2 -> 3 -> 4 -> 5", ll.toString());
+        ll.add(1);
+        ll.add(2);
+        assertEquals("2 -> 1 -> 1 -> 2 -> 3 -> 4 -> 5", ll.toString());
         assertEquals(2, ll.removeDuplicates());
-        assertEquals("1 -> 2 -> 3 -> 4 -> 5", ll.toString());
+        assertEquals("2 -> 1 -> 3 -> 4 -> 5", ll.toString());
     }
 
     @Test
     public void testFindKthToLastItem() {
-        int num = 5;
-        while (num > 0) {
-            ll.add(num);
-            --num;
-        }
         assertEquals(3, ll.findKthToLastItem(3));
         assertEquals(2, ll.findKthToLastItem(4));
     }
 
     @Test
     public void testRemoveMiddleNodeWithEvenNodes() {
-        int num = 5;
-        while (num > 0) {
-            ll.add(num);
-            --num;
-        }
         ll.removeMiddleNode();
         assertEquals("1 -> 2 -> 4 -> 5", ll.toString());
     }
 
     @Test
     public void testRemoveMiddleNodeWithOddNodes() {
-        int num = 4;
-        while (num > 0) {
-            ll.add(num);
-            --num;
-        }
+        ll.add(6);
         ll.removeMiddleNode();
-        assertEquals("1 -> 3 -> 4", ll.toString());
+        assertEquals("6 -> 1 -> 3 -> 4 -> 5", ll.toString());
     }
 
 }
