@@ -45,4 +45,15 @@ public class LinkedListTest {
         assertEquals("1 -> 2 -> 3 -> 4 -> 5", ll.toString());
     }
 
+    @Test
+    public void testFindKthToLastItem() {
+        int num = 5;
+        while (num > 0) {
+            ll.add(num);
+            --num;
+        }
+        assertEquals(3, ll.findKthToLastItem(3));
+        assertEquals(2, ll.findKthToLastItem(4));
+    }
+
 }
