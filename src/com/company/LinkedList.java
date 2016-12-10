@@ -87,4 +87,27 @@ public class LinkedList {
             return current.getData();
         }
         return findKthToLastItem(current.getNext(), k, ++count);
-    }}
+    }
+
+    /*
+    Initial Thoughts:
+    This requires two pointers in the LLL: One that traverses slowly, and one
+    that traverses 2 nodes for every 1 node the slow one traveses. When
+    the fast pointer's next pointer is null, then the slow pointer is in the
+    middle.
+     */
+    public void removeMiddleNode() {
+        if (this.head == null || getLength() < 2) {
+            return;
+        }
+        Node slowPrevious = null;
+        Node slow = this.head;
+        Node fast = this.head;
+        while (fast.getNext() != null && fast.getNext().getNext() != null) {
+            slowPrevious = slow;
+            slow = slow.getNext();
+            fast = fast.getNext().getNext();
+        }
+        slowPrevious.setNext(slow.getNext());
+    }
+}

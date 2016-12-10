@@ -56,4 +56,26 @@ public class LinkedListTest {
         assertEquals(2, ll.findKthToLastItem(4));
     }
 
+    @Test
+    public void testRemoveMiddleNodeWithEvenNodes() {
+        int num = 5;
+        while (num > 0) {
+            ll.add(num);
+            --num;
+        }
+        ll.removeMiddleNode();
+        assertEquals("1 -> 2 -> 4 -> 5", ll.toString());
+    }
+
+    @Test
+    public void testRemoveMiddleNodeWithOddNodes() {
+        int num = 4;
+        while (num > 0) {
+            ll.add(num);
+            --num;
+        }
+        ll.removeMiddleNode();
+        assertEquals("1 -> 3 -> 4", ll.toString());
+    }
+
 }
