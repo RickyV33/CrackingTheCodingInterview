@@ -31,4 +31,20 @@ public class LinkedListTest {
         }
         assertEquals("1 -> 2 -> 3 -> 4 -> 5", ll.toString());
     }
+
+    @Test
+    public void testRemoveDuplicates() {
+        int num = 5;
+        while (num > 0) {
+            if (num == 1 || num == 2) {
+                ll.add(num);
+            }
+            ll.add(num);
+            --num;
+        }
+        assertEquals("1 -> 1 -> 2 -> 2 -> 3 -> 4 -> 5", ll.toString());
+        assertEquals(2, ll.removeDuplicates());
+        assertEquals("1 -> 2 -> 3 -> 4 -> 5", ll.toString());
+    }
+
 }
