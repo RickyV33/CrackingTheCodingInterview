@@ -5,13 +5,11 @@ package com.company;
  */
 public class LinkedList {
     private Node head;
-    private int length;
 
     void add(int data) {
         Node temp = new Node(data);
         temp.setNext(this.head);
         this.head = temp;
-        ++length;
     }
 
     public String toString() {
@@ -28,7 +26,14 @@ public class LinkedList {
     }
 
     public int getLength() {
-        return length;
+        return countLLL(this.head);
+    }
+
+    private int countLLL(Node current) {
+        if (current == null) {
+            return 0;
+        }
+        return countLLL(current.getNext()) + 1;
     }
 
     /*
@@ -43,7 +48,7 @@ public class LinkedList {
     Time complexity is at least O(N)
      */
     public int removeDuplicates() {
-        if (this.head == null || this.length == 1) {
+        if (this.head == null || getLength() == 1) {
             return 0;
         }
         return removeDuplicates(this.head.getData(), this.head.getNext(), this.head);
@@ -59,4 +64,27 @@ public class LinkedList {
         }
        return removeDuplicates(current.getData(), current.getNext(), current);
     }
-}
+
+    /*
+    Initial Thoughts:
+    If you know the length of the linked list, then the Kth to last element is
+    also the length - Kth node in the list.
+    Assume all data is > 0. This will take O(N) to run.
+     */
+    public int findKthToLastItem(int k) {
+        if (this.head == null) {
+            return -1;
+        }
+        int length = getLength() - k;
+        return findKthToLastItem(this.head, length, 0);
+    }
+
+    private int findKthToLastItem(Node current, int k, int count) {
+        if (current == null) {
+            return -1;
+        }
+        if (count == k) {
+            return current.getData();
+        }
+        return findKthToLastItem(current.getNext(), k, ++count);
+    }}
